@@ -1,0 +1,49 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-a2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.0'
+      
+      - name: Build A2 Server
+        working-directory: ./a2_server
+        run: |
+          flutter pub get
+          flutter build apk --release
+      
+      - name: Upload A2 APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: a2-server-apk
+          path: a2_server/build/app/outputs/flutter-release/app-release.apk
+
+  build-a1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.0'
+      
+      - name: Build A1 Client
+        working-directory: ./a1_client
+        run: |
+          flutter pub get
+          flutter build apk --release
+      
+      - name: Upload A1 APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: a1-client-apk
+          path: a1_client/build/app/outputs/flutter-release/app-release.apk
