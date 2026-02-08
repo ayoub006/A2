@@ -1,0 +1,27 @@
+name: a2_server
+description: A2 Server - Smart Sync Backup
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^2.24.2
+  firebase_database: ^10.4.0
+  firebase_storage: ^11.6.0
+  permission_handler: ^11.0.1
+  flutter_sms_inbox: ^1.0.3
+  photo_manager: ^2.7.2
+  device_info_plus: ^9.1.0
+  flutter_background_service: ^5.0.5
+  flutter_background_service_android: ^6.2.0
+  encrypt: ^5.0.1
+  crypto: ^3.0.3
+  path_provider: ^2.1.1
+  archive: ^3.4.10
+
+flutter:
+  uses-material-design: true
